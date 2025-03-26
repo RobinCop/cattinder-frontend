@@ -1,7 +1,6 @@
 import './App.css';
-import CatCard from './components/CatCard';
 import useCats from './hooks/useCats';
-
+import CatSwiper from './features/CatSwiper';
 
 
 function App() {
@@ -9,12 +8,7 @@ function App() {
 
   return (
     <div className="app">
-      {cats.map((cat) => (
-      <CatCard 
-        name={cat.name} 
-        imageBase64={cat.imageBase64} 
-        description={cat.description}/>
-      ))}
+      <CatSwiper cats={cats} />
     </div>
   );
 }
