@@ -1,10 +1,10 @@
-.cat-swiper-buttons {
+.card-swiper-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
 }
 
-.cat-swiper-button {
+.card-swiper-button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 8px;
@@ -12,7 +12,7 @@
   cursor: pointer;
 }
 
-.cat-swiper{
+.card-swiper{
     display: flex;
     flex-direction: column;
     align-items: center;

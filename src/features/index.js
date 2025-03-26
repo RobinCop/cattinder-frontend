@@ -1,1 +1,1 @@
-export {  default  } from './CatSwiper'; 
+export {  default  } from './CardSwiper'; 

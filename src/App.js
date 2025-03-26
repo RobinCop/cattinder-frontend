@@ -1,6 +1,6 @@
 import './App.css';
 import useCats from './hooks/useCats';
-import CatSwiper from './features/CatSwiper';
+import CatSwiper from './features/CardSwiper';
 
 
 function App() {
