@@ -7,10 +7,15 @@
     border-radius: 8px;
     width: 450px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
   }
 
 .cat-card-img{
     aspect-ratio: 1 / 1;
     object-fit: cover;
     width:100%;
+}
+
+.cat-card.swipe-right{
+    transform:translateX(500px) rotate(20deg);
 }
