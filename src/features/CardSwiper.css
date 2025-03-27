@@ -1,6 +1,7 @@
 .card-swiper-buttons {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -12,13 +13,21 @@
   cursor: pointer;
 }
 
-.card-swiper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    width: 450px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+.card-stack {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 1rem;
+}
+
+.card-swiper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* ✅ consistent with card width */
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

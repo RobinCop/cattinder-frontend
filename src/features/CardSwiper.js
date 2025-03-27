@@ -7,14 +7,19 @@ function CatSwiper({cats}){
     const [likedCards,setLikedCards] = useState([]);
     const [swipeClass,setSwipeClass] = useState('');
 
+    const [activeCard, setActiveCard] = useState(cats[0]); // The card currently shown
+    const [nextCardIndex, setNextCardIndex] = useState(1); // Tracks who comes next
+
     function handleLike(){
-        setSwipeClass('swipe-right');
+        setSwipeClass('swipe-right'); // trigger CSS animation
+        setLikedCards([...likedCards,activeCard]); // add to liked cards
+
 
         setTimeout(() => {
-            setLikedCards([...likedCards, cats[currentCardIndex]]);
-            setCurrentCardIndex(currentCardIndex + 1);
-            setSwipeClass(''); //reset swipeClass
-          }, 300); // match the CSS transition duration (ms)
+            setActiveCard(cats[nextCardIndex]);    // update to next card
+            setNextCardIndex(nextCardIndex + 1);       // move index forward
+            setSwipeClass('');                 // reset animation class
+        }, 400); // matches your CSS transition time
     }
 
 
@@ -29,8 +34,13 @@ function CatSwiper({cats}){
     return (
         <div className="card-swiper">
             <div className="card-stack">
+                {cats[nextCardIndex] && (
+                    <CatCard {...cats[nextCardIndex]} isBehind={true} />
+                )}
 
-            <CatCard {...cats[currentCardIndex]} swipeClass={swipeClass} />
+                {activeCard && (
+                    <CatCard {...activeCard} swipeClass={swipeClass} />
+                )}
             </div>
 
             <div className="card-swiper-buttons">
