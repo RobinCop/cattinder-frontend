@@ -13,6 +13,7 @@ function CatSwiper({cats}){
 
         setTimeout(() => {
             setCurrentCardIndex(currentCardIndex + 1); 
+            setSwipeClass('');
         }, 400); 
     }
 
@@ -28,24 +29,12 @@ function CatSwiper({cats}){
         <div className="card-swiper">
            <div className="card-stack">
                 {cats[currentCardIndex + 1] && (
-                    <CatCard
-                    key={cats[currentCardIndex + 1].id}
-                    name={cats[currentCardIndex + 1].name}
-                    imageBase64={cats[currentCardIndex + 1].imageBase64}
-                    description={cats[currentCardIndex + 1].description}
-                    isBehind={true}
-                    />
+                    <CatCard key={currentCardIndex + 1} {...cats[currentCardIndex + 1]} isBehind={true}/>
+                )}
+                {cats[currentCardIndex] && (
+                    <CatCard key={currentCardIndex} {...cats[currentCardIndex]} swipeClass={swipeClass}/>
                 )}
 
-                {cats[currentCardIndex] && (
-                    <CatCard
-                    key={cats[currentCardIndex].id}
-                    name={cats[currentCardIndex].name}
-                    imageBase64={cats[currentCardIndex].imageBase64}
-                    description={cats[currentCardIndex].description}
-                    swipeClass={swipeClass}
-                    />
-                )}
             </div>
             <div className="card-swiper-buttons">
                 <button className="card-swiper-button" onClick={handleDislike}>Dislike</button>
