@@ -11,7 +11,24 @@ function useCats(){
         .catch((err) => console.error('Error fetching cats', err));
     },[]);
 
-    return cats;
+
+    async function submitSwipeResults(liked, disliked) {
+        try {
+          const res = await fetch('https://localhost:7290/api/swipe-results', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ liked, disliked }),
+          });
+    
+          if (!res.ok) throw new Error('Failed to submit swipe results');
+          const result = await res.json();
+          return result;
+        } catch (err) {
+          console.error('Error submitting swipe results:', err);
+        }
+      }
+
+    return {cats, submitSwipeResults};
 }
 
 export default useCats;

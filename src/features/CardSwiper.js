@@ -2,26 +2,35 @@ import { useState } from 'react';
 import CatCard from '../components/CatCard';
 import './CardSwiper.css';
 
-function CatSwiper({cats}){
+function CatSwiper({cats,submitSwipeResults}) {
     const [currentCardIndex,setCurrentCardIndex] = useState(0);
     const [likedCards,setLikedCards] = useState([]);
+    const [dislikedCards,setDislikedCards] = useState([]);
     const [swipeClass,setSwipeClass] = useState('');
 
     function handleLike() {
-        setSwipeClass('swipe-right');
-        setLikedCards([...likedCards, cats[currentCardIndex]]); 
+        handleSwipe('swipe-right', setLikedCards);
+    }
+      
+    function handleDislike() {
+        handleSwipe('swipe-left', setDislikedCards);
+    }
+      
+    function handleSwipe(direction, setCards) {
+        setSwipeClass(direction);
+        setCards((cards) => [...cards, cats[currentCardIndex]]); 
 
         setTimeout(() => {
-            setCurrentCardIndex(currentCardIndex + 1); 
+            setCurrentCardIndex((index) => index + 1); 
             setSwipeClass('');
-        }, 400); 
-    }
-
-    function handleDislike(){
-        setCurrentCardIndex(currentCardIndex + 1);
+        }, 400);
     }
     
     if(currentCardIndex >= cats.length){
+        submitSwipeResults(likedCards, dislikedCards);
+        setLikedCards([]);
+        setDislikedCards([]);
+        setCurrentCardIndex(0);
         return <h2>No more to swipe!</h2>;
     }
 

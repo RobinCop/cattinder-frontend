@@ -4,11 +4,11 @@ import CatSwiper from './features/CardSwiper';
 
 
 function App() {
-  const cats = useCats();
+  const {cats,submitSwipeResults} = useCats();
 
   return (
     <div className="app">
-      <CatSwiper cats={cats} />
+      <CatSwiper cats={cats} submitSwipeResults={submitSwipeResults}/>
     </div>
   );
 }

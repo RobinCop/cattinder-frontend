@@ -11,6 +11,16 @@
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .cat-card.swipe-left{
+    transform:translateX(-500px) rotate(-20deg);
+    opacity:0;
+  }
+
+  .cat-card.swipe-right{
+    transform:translateX(500px) rotate(20deg);
+    opacity:0;
+  }
   
   /* Makes the "next" card sit behind the top one */
   .card-behind {
@@ -35,7 +45,4 @@
     margin:0px;
   }
 
-.cat-card.swipe-right{
-    transform:translateX(500px) rotate(20deg);
-    opacity:0;
-}
+
