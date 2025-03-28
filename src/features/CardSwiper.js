@@ -7,21 +7,14 @@ function CatSwiper({cats}){
     const [likedCards,setLikedCards] = useState([]);
     const [swipeClass,setSwipeClass] = useState('');
 
-    const [activeCard, setActiveCard] = useState(cats[0]); // The card currently shown
-    const [nextCardIndex, setNextCardIndex] = useState(1); // Tracks who comes next
-
-    function handleLike(){
-        setSwipeClass('swipe-right'); // trigger CSS animation
-        setLikedCards([...likedCards,activeCard]); // add to liked cards
-
+    function handleLike() {
+        setSwipeClass('swipe-right');
+        setLikedCards([...likedCards, cats[currentCardIndex]]); 
 
         setTimeout(() => {
-            setActiveCard(cats[nextCardIndex]);    // update to next card
-            setNextCardIndex(nextCardIndex + 1);       // move index forward
-            setSwipeClass('');                 // reset animation class
-        }, 400); // matches your CSS transition time
+            setCurrentCardIndex(currentCardIndex + 1); 
+        }, 400); 
     }
-
 
     function handleDislike(){
         setCurrentCardIndex(currentCardIndex + 1);
@@ -33,16 +26,27 @@ function CatSwiper({cats}){
 
     return (
         <div className="card-swiper">
-            <div className="card-stack">
-                {cats[nextCardIndex] && (
-                    <CatCard {...cats[nextCardIndex]} isBehind={true} />
+           <div className="card-stack">
+                {cats[currentCardIndex + 1] && (
+                    <CatCard
+                    key={cats[currentCardIndex + 1].id}
+                    name={cats[currentCardIndex + 1].name}
+                    imageBase64={cats[currentCardIndex + 1].imageBase64}
+                    description={cats[currentCardIndex + 1].description}
+                    isBehind={true}
+                    />
                 )}
 
-                {activeCard && (
-                    <CatCard {...activeCard} swipeClass={swipeClass} />
+                {cats[currentCardIndex] && (
+                    <CatCard
+                    key={cats[currentCardIndex].id}
+                    name={cats[currentCardIndex].name}
+                    imageBase64={cats[currentCardIndex].imageBase64}
+                    description={cats[currentCardIndex].description}
+                    swipeClass={swipeClass}
+                    />
                 )}
             </div>
-
             <div className="card-swiper-buttons">
                 <button className="card-swiper-button" onClick={handleDislike}>Dislike</button>
                 <button className="card-swiper-button" onClick={handleLike}>Like</button>
