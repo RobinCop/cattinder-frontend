@@ -11,12 +11,9 @@
     border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
-
- 
   
   /* Makes the "next" card sit behind the top one */
   .card-behind {
-    transform: scale(0.95) translateY(10px);
     z-index: 0;
   }
   
@@ -33,11 +30,8 @@
     margin-bottom: 1rem;
   }
 
-  .cat-card-name{
-    margin:0px;
-  }
-
-  .cat-card.description{
+  .cat-card-name,
+  .cat-card-description{
     margin:0px;
   }
 

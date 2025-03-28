@@ -25,7 +25,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px; /* ✅ consistent with card width */
+  width: 300px; 
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
